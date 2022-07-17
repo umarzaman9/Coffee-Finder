@@ -4,14 +4,14 @@ import Image from 'next/image';
 import Banner from '../components/banner';
 import Card from '../components/card';
 
-import coffeeStores from '../data/coffee-stores.json';
+import coffeeStoresData from '../data/coffee-stores.json';
 
 import styles from '../styles/Home.module.css'
 
 export async function getStaticProps(context) {
   return {
     props: {
-      coffeeStores,
+      coffeeStores: coffeeStoresData,
     },
   }
 }
@@ -32,12 +32,12 @@ export default function Home(props) {
       <main className={styles.main}>
         <Banner buttonText="View stores nearby" handleOnClick={handleOnBannerBtnClick} />
       <div className={styles.heroImage}>
-        <Image  src="/static/hero-image.png" width={700} height={400} />
+        <Image  src="/static/hero-image.png" width={600} height={300} />
       </div>
       
-      { coffeeStores.length > 0 && (
+      { props.coffeeStores.length > 0 && (
         <> 
-        <h2 className={styles.headings2}>Umar k sary stores</h2>    
+        <h2 className={styles.heading2}>Umar k sary stores</h2>    
         <div className={styles.cardLayout}>     
           {props.coffeeStores.map(coffeeStores => {
             return (
